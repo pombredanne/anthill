@@ -5,7 +5,6 @@ from django.contrib.contenttypes import generic
 from django.conf import settings
 from tagging.fields import TagField
 from markupfield.fields import MarkupField
-from brainstorm.models import Idea
 from feedinator.models import Subscription
 
 class Project(models.Model):
@@ -21,7 +20,6 @@ class Project(models.Model):
 
     lead = models.ForeignKey(User, related_name='projects_lead_on')
     members = models.ManyToManyField(User, through='Role')
-    idea = models.ForeignKey(Idea, blank=True, null=True, related_name='projects')
 
     subscriptions = generic.GenericRelation(Subscription)
 

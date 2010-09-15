@@ -8,7 +8,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('anthill.projects.views',
-    url(r'^$', 'projects_and_ideas', name='projects_and_ideas'),
+    url(r'^$', 'projects', name='projects'),
     url(r'^all/$', 'archive', name='all_projects'),
     url(r'^official/$', 'archive', {'projects':'official'},
         name='official_projects'),

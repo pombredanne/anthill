@@ -2,7 +2,6 @@ from django import forms
 from django.forms.formsets import formset_factory
 from django.forms.models import inlineformset_factory
 from django.template.defaultfilters import slugify
-from brainstorm.models import Idea
 from anthill.projects.models import Project, Link, Role
 
 def _slugify(name, Model):
@@ -17,11 +16,9 @@ def _slugify(name, Model):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['slug', 'name', 'description', 'tags', 'idea']
+        fields = ['slug', 'name', 'description', 'tags']
 
     slug = forms.CharField(max_length=50, required=False)
-    idea = forms.ModelChoiceField(required=False, queryset=Idea.objects.all(),
-                                  widget=forms.widgets.HiddenInput())
 
     def clean(self):
         base_slug = self.cleaned_data['slug'] or slugify(name)
