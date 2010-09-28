@@ -18,7 +18,9 @@ class EventManager(LocationModelManager):
 
 class Event(LocationModel):
     title = models.CharField(max_length=100)
-    description = MarkupField(default_markup_type=settings.ANTHILL_DEFAULT_MARKUP)
+    description = MarkupField(
+        default_markup_type=settings.ANTHILL_DEFAULT_MARKUP,
+        escape_html=True)
     official = models.BooleanField(default=False)
     url = models.URLField(blank=True)
     start_date = models.DateTimeField()

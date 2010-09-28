@@ -15,7 +15,8 @@ INITIAL_MAX_MESSAGES = getattr(settings, 'ANTHILL_MESSAGE_MAX', 100)
 class Profile(LocationModel):
     user = models.OneToOneField(User, related_name='profile')
     url = models.URLField(blank=True)
-    about = MarkupField(blank=True, default_markup_type=DEFAULT_MARKUP)
+    about = MarkupField(blank=True, default_markup_type=DEFAULT_MARKUP,
+                        escape_html=True)
     role = models.CharField(max_length=5, choices=ROLES, default=ROLES[0][0])
     twitter_id = models.CharField(max_length=15, blank=True)
     skills = TagField('comma separated list of your skills (eg. python, django)')

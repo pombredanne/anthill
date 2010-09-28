@@ -12,7 +12,7 @@ class Project(models.Model):
                             max_length=50, unique=True,
                             help_text="(this will become part of your projects URL)")
     name = models.CharField('displayed name of project', max_length=100)
-    description = MarkupField(default_markup_type='markdown')
+    description = MarkupField(default_markup_type='markdown', escape_html=True)
     official = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
